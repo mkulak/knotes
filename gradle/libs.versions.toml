@@ -1,0 +1,23 @@
+[versions]
+java = { strictly = "17" }
+kotlin = { strictly = "1.8.21" }
+vertx = { strictly = "4.4.1" }
+jackson = { strictly = "2.15.0" }
+
+[libraries]
+vertx-core = { module = "io.vertx:vertx-core", version.ref = "vertx" }
+vertx-web = { module = "io.vertx:vertx-web", version.ref = "vertx" }
+vertx-web-client = { module = "io.vertx:vertx-web-client", version.ref = "vertx" }
+vertx-web-openapi = { module = "io.vertx:vertx-web-openapi", version.ref = "vertx" }
+vertx-lang-kotlin-coroutines = { module = "io.vertx:vertx-lang-kotlin-coroutines", version.ref = "vertx" }
+jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+jackson-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
+[bundles]
+vertx = ["vertx-core", "vertx-web", "vertx-web-client", "vertx-web-openapi", "vertx-lang-kotlin-coroutines"]
+jackson = ["jackson-kotlin", "jackson-jsr310"]
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+jib = { id = "com.google.cloud.tools.jib", version = "3.1.4" }
