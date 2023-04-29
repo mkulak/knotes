@@ -17,7 +17,7 @@ repositories {
 dependencies {
     implementation(libs.bundles.vertx)
     implementation(libs.bundles.jackson)
-    testImplementation(libs.kotlin.test)
+    testImplementation(libs.bundles.test)
 }
 
 tasks.test {

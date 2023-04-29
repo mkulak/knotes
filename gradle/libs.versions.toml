@@ -13,10 +13,13 @@ vertx-lang-kotlin-coroutines = { module = "io.vertx:vertx-lang-kotlin-coroutines
 jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 jackson-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-test-annotations = { module = "org.jetbrains.kotlin:kotlin-test-annotations-common", version.ref = "kotlin" }
+kotlin-test-juni5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5 ", version.ref = "kotlin" }
 
 [bundles]
 vertx = ["vertx-core", "vertx-web", "vertx-web-client", "vertx-web-openapi", "vertx-lang-kotlin-coroutines"]
 jackson = ["jackson-kotlin", "jackson-jsr310"]
+test = ["kotlin-test", "kotlin-test-annotations", "kotlin-test-juni5"]
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
