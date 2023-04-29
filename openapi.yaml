@@ -1,0 +1,136 @@
+openapi: 3.0.0
+info:
+  title: User Notes API
+  version: 1.0.0
+  description: API for managing user notes
+servers:
+  - url: http://localhost:8000
+paths:
+  /notes/{note_id}:
+    get:
+      summary: Retrieve a note by ID
+      operationId: getNoteById
+      parameters:
+        - name: note_id
+          in: path
+          description: ID of the note to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Note retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  note_id:
+                    type: string
+                    description: ID of the note
+                  authorId:
+                    type: string
+                    description: ID of the note author
+                  title:
+                    type: string
+                    description: Note title
+                  text:
+                    type: string
+                    description: Note text
+                  createdAt:
+                    type: string
+                    format: date-time
+                    description: Note creation date and time
+        404:
+          description: Note not found
+    delete:
+      summary: Delete a note by ID
+      operationId: deleteNoteById
+      parameters:
+        - name: note_id
+          in: path
+          description: ID of the note to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Note deleted successfully
+        404:
+          description: Note not found
+    patch:
+      summary: Update a note by ID
+      operationId: updateNoteById
+      parameters:
+        - name: note_id
+          in: path
+          description: ID of the note to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Note data to update
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                authorId:
+                  type: string
+                  description: ID of the note author
+                title:
+                  type: string
+                  description: Note title
+                text:
+                  type: string
+                  description: Note text
+                createdAt:
+                  type: string
+                  format: date-time
+                  description: Note creation date and time
+              example:
+                authorId: AU1033123
+                title: Updated note title
+                text: Updated note text
+                createdAt: '2023-04-28T23:41:00Z'
+      responses:
+        200:
+          description: Note updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  note_id:
+                    type: string
+                    description: ID of the note
+                  authorId:
+                    type: string
+                    description: ID of the note author
+                  title:
+                    type: string
+                    description: Note title
+                  text:
+                    type: string
+                    description: Note text
+                  createdAt:
+                    type: string
+                    format: date-time
+                    description: Note creation date and time
+        404:
+          description: Note not found
+  /notes:
+    get:
+      summary: Retrieve notes by author ID
+      operationId: getNotesByAuthorId
+      parameters:
+        - name: author_id
+          in: query
+          description: ID of the note author to retrieve notes for
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Notes retrieved successfully
